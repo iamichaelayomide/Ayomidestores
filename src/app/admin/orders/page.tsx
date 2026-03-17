@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { formatPrice } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminOrders() {
   const orders = await prisma.order.findMany({
     orderBy: { createdAt: 'desc' }
@@ -62,3 +64,4 @@ export default async function AdminOrders() {
     </div>
   );
 }
+

@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function CategoriesPage() {
   const categories = await prisma.category.findMany({
     orderBy: { name: 'asc' }
@@ -37,3 +39,4 @@ export default async function CategoriesPage() {
     </div>
   );
 }
+

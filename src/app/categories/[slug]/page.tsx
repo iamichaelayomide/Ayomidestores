@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { ProductCard } from "@/components/ProductCard";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export default async function CategorySlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   
@@ -42,3 +44,4 @@ export default async function CategorySlugPage({ params }: { params: Promise<{ s
     </div>
   );
 }
+

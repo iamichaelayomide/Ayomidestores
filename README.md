@@ -4,13 +4,13 @@ A modern, fast, and scalable e-commerce application built with Next.js, React, T
 
 ## Features Included
 
-- 🛒 **Storefront**: Premium, Stripe/Apple-inspired modern UI.
-- 📱 **Mobile-First Responsive**: Looks great on all devices.
-- 🛍️ **Cart & Checkout**: Persistent cart using Zustand, with simulated Paystack & Bank Transfer options.
-- 🔑 **Authentication**: NextAuth setup with Credentials provider (ready for OAuth).
-- 🗄️ **Database**: Fully typed Prisma ORM setup.
-- 📦 **Admin Dashboard**: Scaffolded backend to manage products, categories, and orders.
-- ✨ **Design System**: Built with Tailwind CSS and radix-ui/shadcn-inspired components.
+- **Storefront**: Premium, Stripe/Apple-inspired modern UI.
+- **Mobile-First Responsive**: Looks great on all devices.
+- **Cart & Checkout**: Persistent cart using Zustand, with simulated Paystack & Bank Transfer options.
+- **Authentication**: NextAuth setup with Credentials provider (ready for OAuth).
+- **Database**: Fully typed Prisma ORM setup.
+- **Admin Dashboard**: Scaffolded backend to manage products, categories, and orders.
+- **Design System**: Built with Tailwind CSS and radix-ui/shadcn-inspired components.
 
 ## Tech Stack
 
@@ -38,12 +38,15 @@ For Supabase:
 - set `DIRECT_URL` to the Supabase direct connection string
 - keep `NEXTAUTH_URL` as `http://localhost:3000` for local development
 - generate a long random `NEXTAUTH_SECRET`
+- if you use the Supabase browser helpers, also set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 
 ```env
 DATABASE_URL="postgresql://postgres:[password]@aws-0-region.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1"
 DIRECT_URL="postgresql://postgres:[password]@db.[project-ref].supabase.co:5432/postgres"
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="your_secure_secret"
+NEXT_PUBLIC_SUPABASE_URL="https://[project-ref].supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY="sb_publishable_placeholder"
 ```
 
 ### 3. Setup Database and Seed Data
@@ -124,6 +127,8 @@ git push -u origin main
    - `DIRECT_URL`
    - `NEXTAUTH_URL`
    - `NEXTAUTH_SECRET`
+   - `NEXT_PUBLIC_SUPABASE_URL` if you use the Supabase helpers
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` if you use the Supabase helpers
 3. Set `NEXTAUTH_URL` to your production domain, for example `https://your-app.vercel.app`.
 4. Redeploy after saving the variables.
 
@@ -132,3 +137,4 @@ git push -u origin main
 - **Payments**: Connect actual Paystack APIs in the `checkout` process. 
 - **Images**: Integrate Cloudinary or UploadThing for handling product image uploads in the admin panel.
 - **Emails**: Implement `resend` or `nodemailer` within API routes for order confirmation emails.
+

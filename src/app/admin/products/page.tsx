@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminProducts() {
   const products = await prisma.product.findMany({
     include: { category: true },
@@ -70,3 +72,4 @@ export default async function AdminProducts() {
     </div>
   );
 }
+

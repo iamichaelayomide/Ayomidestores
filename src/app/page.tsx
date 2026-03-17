@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/ProductCard";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
+
 export default async function Home() {
   // Fetch some featured and deal products
   const featuredProducts = await prisma.product.findMany({

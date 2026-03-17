@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { formatPrice } from "@/lib/utils";
 import { Package, ShoppingBag, Users, DollarSign } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboard() {
   const [productCount, orderCount, userCount] = await Promise.all([
     prisma.product.count(),
@@ -58,3 +60,4 @@ export default async function AdminDashboard() {
     </div>
   );
 }
+
