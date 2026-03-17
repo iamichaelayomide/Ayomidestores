@@ -70,6 +70,18 @@ npm run dev
 
 Visit `http://localhost:3000` to view the storefront, and `http://localhost:3000/admin` to access the admin dashboard.
 
+### Health Check
+
+The app exposes a lightweight runtime health endpoint at:
+
+```bash
+GET /api/health
+```
+
+Expected responses:
+- `200` when the app process is up and Prisma can reach the database
+- `503` when the app is running but the database check fails
+
 ## Production Packaging
 
 Build a deployable standalone package with:
@@ -131,6 +143,21 @@ git push -u origin main
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` if you use the Supabase helpers
 3. Set `NEXTAUTH_URL` to your production domain, for example `https://your-app.vercel.app`.
 4. Redeploy after saving the variables.
+
+### Current Production Setup
+
+The current live deployment is:
+
+```text
+https://ayomidestores.vercel.app
+```
+
+The production environment uses:
+- `DATABASE_URL` as the Supabase transaction pooler URL on port `6543` with `?pgbouncer=true&connection_limit=1`
+- `DIRECT_URL` as the Supabase session pooler URL on port `5432`
+- `NEXTAUTH_URL=https://ayomidestores.vercel.app`
+
+If you change any of the database or auth environment variables in Vercel, redeploy immediately so the running deployment picks up the new values.
 
 ## Extending the App
 
